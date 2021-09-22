@@ -1,7 +1,7 @@
 ﻿using CatalogoJogosAPI.Exceptions;
 using CatalogoJogosAPI.InputModel;
 using CatalogoJogosAPI.Services;
-using CatalogoJogosAPI.ViewModel
+using CatalogoJogosAPI.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -13,7 +13,10 @@ namespace CatalogoJogosAPI.Services
     public class JogoService : IJogoService
     {
         private readonly IJogoRepository _jogoRepository;
-
+        public JogoService(IJogoRepository jogoRepository)
+        {
+            _jogoRepository = jogoRepository;
+        }
         public async Task<List<JogoViewModel>> Obter(int pagina, int quantidade)
         {
             var jogos = await _jogoRepository.Obter(pagina, quantidade);
@@ -110,13 +113,5 @@ namespace CatalogoJogosAPI.Services
         {
             _jogoRepository?.Dispose();
         }
-        /* ---------------------------------------------------
-        public JogoService(IJogoRepository jogoRepository)
-        {
-            _jogoRepository = jogoRepository;
-        }
-
-        
-        --------------------------------------------------- */
     }
 }
