@@ -1,4 +1,5 @@
-﻿using CatalogoJogosAPI.InputModel;
+﻿using CatalogoJogosAPI.Exceptions;
+using CatalogoJogosAPI.InputModel;
 using CatalogoJogosAPI.Services;
 using CatalogoJogosAPI.ViewModel
 using Microsoft.AspNetCore.Http;
@@ -15,9 +16,9 @@ namespace CatalogoJogosAPI.Controllers.V1
     [ApiController]
     public class JogosController : ControllerBase
     {
-        private readonly IJOgoService _jogoService;
+        private readonly IJogoService _jogoService;
 
-        public JogosController(IJOgoService jogoService)
+        public JogosController(IJogoService jogoService)
         {
             this._jogoService = jogoService;
         }
@@ -53,8 +54,7 @@ namespace CatalogoJogosAPI.Controllers.V1
 
                 return Ok(jogo);
             }
-            //catch (JogoJaCadastradoException ex)
-            catch (Exception ex)
+            catch (JogoJaCadastradoException ex)
             {
                 return UnprocessableEntity("Já existe um jogo com este nome para esta produtora");
             }
@@ -69,7 +69,7 @@ namespace CatalogoJogosAPI.Controllers.V1
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (JogoNaoCadastradoException ex)
             {
                 return NotFound("Não existe esse jogo.");
             }
@@ -84,7 +84,7 @@ namespace CatalogoJogosAPI.Controllers.V1
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (JogoNaoCadastradoException ex)
             {
                 return NotFound("Não existe esse jogo.");
             }
@@ -99,8 +99,7 @@ namespace CatalogoJogosAPI.Controllers.V1
 
                 return Ok();
             }
-            //catch (JogoNaoCadastradoException ex)
-            catch (Exception ex)
+            catch (JogoNaoCadastradoException ex)
             {
                 return NotFound("Não existe esse jogo");
             }
