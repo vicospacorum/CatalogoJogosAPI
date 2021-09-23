@@ -31,10 +31,14 @@ namespace CatalogoJogosAPI
             services.AddScoped<IJogoService, JogoService>();
             services.AddScoped<IJogoRepository, JogoSqlServerRepository>();
 
+
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CatalogoJogosAPI", Version = "v1" });
+
+
             });
         }
 
